@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saly Fish House - Fresh Fish Daily</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #57cc99;
+            --accent: #ff9a3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+           
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0d4c63;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 95, 122, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(26, 95, 122, 0.05);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION WITH VIDEO BACKGROUND ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* ===== ROASTED FISH DISH ===== */
+.fish-dish-container {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    width: 600px;
+    height: 500px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.roasted-fish {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    animation: float-fish 8s ease-in-out infinite;
+}
+
+/* ===== INTERACTIVE FISH EYES & MOUTH ===== */
+.fish-eye {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+}
+
+.fish-eye::before {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #222;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% + var(--pupil-x, 0px)), calc(-50% + var(--pupil-y, 0px)));
+    transition: all 0.15s ease-out;
+}
+
+.left-eye {
+    top: 42%;
+    left: 35%;
+}
+
+.right-eye {
+    top: 42%;
+    left: 65%;
+}
+
+.fish-mouth {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background: #8b4513;
+    border-radius: 0 0 15px 15px;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-out;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.6);
+    pointer-events: none;
+}
+
+/* ===== CONTENT CONTAINER ===== */
+.hero .container {
+    position: relative;
+    z-index: 5;
+    max-width: 600px;
+    margin-left: 50px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.hero .highlight {
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn-primary {
+    background: linear-gradient(45deg, #ff8c00, #ff6b00);
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.4);
+}
+
+.btn-primary i {
+    font-size: 1.2rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float-fish {
+    0%, 100% {
+        transform: translateY(0) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-1deg);
+    }
+}
+
+/* Heat effect under the fish */
+.fish-dish-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, 
+        rgba(255, 69, 0, 0.4) 0%, 
+        rgba(255, 69, 0, 0.2) 40%, 
+        transparent 70%);
+    border-radius: 50%;
+    animation: heat-glow 3s infinite alternate;
+    filter: blur(5px);
+}
+
+@keyframes heat-glow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .fish-dish-container {
+        width: 500px;
+        height: 400px;
+        right: 30px;
+        bottom: 30px;
+    }
+    
+    .hero .container {
+        margin-left: 30px;
+        max-width: 500px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 100px;
+    }
+    
+    .fish-dish-container {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 400px;
+        height: 300px;
+        margin: 0 auto 40px;
+        z-index: 4;
+    }
+    
+    .hero .container {
+        margin-left: 0;
+        margin: 0 auto;
+        max-width: 90%;
+        z-index: 5;
+    }
+    
+    .video-background video {
+        /* Ensure video still covers on tablet */
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 768px) {
+    .fish-dish-container {
+        width: 350px;
+        height: 250px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .hero .container {
+        padding: 30px 20px;
+    }
+    
+    /* Adjust eye and mouth positions for smaller fish */
+    .left-eye {
+        top: 40%;
+        left: 35%;
+    }
+    
+    .right-eye {
+        top: 40%;
+        left: 65%;
+    }
+    
+    .fish-mouth {
+        top: 53%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        min-height: 90vh;
+        padding: 15px;
+    }
+    
+    .fish-dish-container {
+        width: 280px;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .fish-eye {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .fish-eye::before {
+        width: 5px;
+        height: 5px;
+    }
+    
+    .fish-mouth {
+        width: 20px;
+        height: 10px;
+        border-radius: 0 0 10px 10px;
+    }
+    
+    .video-background video {
+        /* On very small screens, you might want to hide video if it affects performance */
+    }
+}
+
+/* Mobile Portrait Optimization */
+@media (max-width: 768px) and (orientation: portrait) {
+    .hero {
+        padding-top: 80px;
+    }
+    
+    .fish-dish-container {
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 992px) and (orientation: landscape) {
+    .hero {
+        min-height: 120vh;
+    }
+    
+    .fish-dish-container {
+        width: 300px;
+        height: 250px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ===== VIDEO FALLBACK STYLES ===== */
+.video-background .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2rem;
+    z-index: 3;
+}
+
+.video-background.no-video {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
+}
+
+.video-background.no-video video {
+    display: none;
+}
+
+.video-background.no-video .video-overlay {
+    display: none;
+}
+
+/* ===== ACCESSIBILITY ===== */
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .roasted-fish,
+    .fish-dish-container::after {
+        animation: none;
+    }
+    
+    .video-background video {
+        animation: none;
+    }
+}
+
+/* ===== PERFORMANCE OPTIMIZATION ===== */
+/* Pause video when not in viewport */
+.video-background video {
+    will-change: transform;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .video-background,
+    .fish-dish-container,
+    .video-overlay {
+        display: none;
+    }
+    
+    .hero {
+        background: white !important;
+        color: black !important;
+        min-height: auto;
+    }
+    
+    .hero .container {
+        background: white !important;
+        color: black !important;
+        border: 1px solid #ccc;
+    }
+}
+
+        /* Menu Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .menu {
+            padding: 80px 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .menu-item-desc {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .menu-item-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: var(--light-gray);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .rating-overview {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rating-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .review-count {
+            color: var(--gray);
+        }
+
+        .sort-options {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sort-select {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-details h4 {
+            font-weight: 600;
+        }
+
+        .reviewer-details p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .review-time {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .review-content {
+            margin-bottom: 15px;
+        }
+
+        .review-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .review-action {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .review-action:hover {
+            color: var(--primary);
+        }
+
+        /* Order Form */
+        .order {
+            padding: 80px 0;
+        }
+
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .order-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .order-summary {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .order-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .reviews-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-grid, .review-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+        }
+
+        /* Add loading state */
+.video-background .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Fallback if video fails to load */
+.video-background.no-video {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 100%);
+}
+
+.video-background.no-video video {
+    display: none;
+}
+
+.video-background.no-video .video-overlay {
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-fish logo-icon"></i>
+                    <div class="logo-text">Saly <span>Fish House</span></div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#order">Order Online</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call Us</button>
+                    <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Order Now</button>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+<section class="hero" id="home">
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/hero-background.mp4" type="video/mp4">
+            <source src="assets/videos/hero-background.webm" type="video/webm">
+            <!-- Fallback image if video doesn't load -->
+            <img src="assets/images/hero-fallback.jpg" alt="Restaurant background">
+        </video>
+        <!-- Video overlay for better text readability -->
+        <div class="video-overlay"></div>
+    </div>
+    
+    <!-- Roasted Fish Image -->
+    <div class="fish-dish-container">
+        <img src="assets/images/main_bg.jpg" alt="Roasted Fish on Plate" class="roasted-fish">
+        
+        <!-- Interactive elements overlay on the fish -->
+        <div class="fish-eye left-eye"></div>
+        <div class="fish-eye right-eye"></div>
+        <div class="fish-mouth"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="container">
+        <h1>Fresh Fish <span class="highlight">365 Days</span> a Year</h1>
+        <p>Experience the finest selection of fish dishes in Addis. We serve delicious, affordable seafood in a cozy atmosphere. Our fish is always fresh, and our recipes are crafted to perfection.</p>
+        <button class="btn btn-primary">
+            <i class="fas fa-utensils"></i> View Our Menu
+        </button>
+    </div>
+</section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Popular Dishes</h2>
+            
+            <div class="menu-grid">
+                <!-- Menu Item 1 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1599709601815-5dab6d59b8c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fish Special Combo" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Special Fish Combo</h3>
+                            <div class="menu-item-price">$12.99</div>
+                        </div>
+                        <p class="menu-item-desc">A delicious combination of grilled fish, vegetables, and our special sauce. Served with rice or bread.</p>
+                        <div class="menu-item-tags">
+                            <span class="tag">Most Popular</span>
+                            <span class="tag">Spicy Option</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fried Tilapia" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Fried Tilapia</h3>
+                            <div class="menu-item-price">$10.50</div>
+                        </div>
+                        <p class="menu-item-desc">Crispy fried tilapia served with vegetables, salad, and your choice of side dish.</p>
+                        <div class="menu-item-tags">
+                            <span class="tag">Crispy</span>
+                            <span class="tag">Family Size</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fish Stew" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Traditional Fish Stew</h3>
+                            <div class="menu-item-price">$9.99</div>
+                        </div>
+                        <p class="menu-item-desc">Slow-cooked fish in a rich, spicy stew with traditional herbs and spices. Served with injera.</p>
+                        <div class="menu-item-tags">
+                            <span class="tag">Traditional</span>
+                            <span class="tag">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-outline" style="padding: 12px 40px;">
+                    View Full Menu <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div class="rating-overview">
+                    <div class="rating-number">4.2</div>
+                    <div>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="review-count">Based on 18 reviews</div>
+                    </div>
+                </div>
+                
+                <div class="sort-options">
+                    <span>Sort by:</span>
+                    <select class="sort-select">
+                        <option>Most Recent</option>
+                        <option>Highest Rated</option>
+                        <option>Lowest Rated</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="review-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">AT</div>
+                            <div class="reviewer-details">
+                                <h4>Abenezer T</h4>
+                                <p>Local Guide · 32 reviews · 280 photos</p>
+                            </div>
+                        </div>
+                        <div class="review-time">a year ago</div>
+                    </div>
+                    
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    
+                    <div class="review-content">
+                        <p>I had a great time here at Saly Fish House. The one I tried from the menu was their special combo and it was great. they say they serve fish 365 days of the year. the spot may not look fancy but their food is great and very affordable.</p>
+                    </div>
+                    
+                    <div class="review-actions">
+                        <button class="review-action">
+                            <i class="far fa-thumbs-up"></i> Like
+                        </button>
+                        <button class="review-action">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">YA</div>
+                            <div class="reviewer-details">
+                                <h4>Yared Ablanios</h4>
+                                <p>5 reviews</p>
+                            </div>
+                        </div>
+                        <div class="review-time">8 months ago</div>
+                    </div>
+                    
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    
+                    <div class="review-content">
+                        <p>Good food for the price but a lot of flys around and dusty atmosphere.</p>
+                    </div>
+                    
+                    <div class="review-actions">
+                        <button class="review-action">
+                            <i class="far fa-thumbs-up"></i> Like
+                        </button>
+                        <button class="review-action">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">YE</div>
+                            <div class="reviewer-details">
+                                <h4>yisehak Eshteu</h4>
+                                <p>Local Guide · 14 reviews</p>
+                            </div>
+                        </div>
+                        <div class="review-time">3 years ago</div>
+                    </div>
+                    
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    
+                    <div class="review-content">
+                        <p>best fish place in addis.. very affordable .. it test good ... gave them 4 stars for house being to small ... need better stuff and there plates are more for durability not presenting the food in a good way but best fish place in addis.</p>
+                    </div>
+                    
+                    <div class="review-actions">
+                        <button class="review-action">
+                            <i class="far fa-thumbs-up"></i> 2
+                        </button>
+                        <button class="review-action">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-outline">
+                    <i class="fas fa-pen"></i> Write a Review
+                </button>
+                <button class="btn btn-primary" style="margin-left: 15px;">
+                    See All Reviews <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="order" id="order">
+        <div class="container">
+            <h2 class="section-title">Order Online</h2>
+            
+            <div class="order-container">
+                <div class="order-form">
+                    <h3 class="form-title">Place Your Order</h3>
+                    
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="Your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="Your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="delivery">Delivery Option</label>
+                            <select id="delivery" class="form-select">
+                                <option value="pickup">Pickup</option>
+                                <option value="delivery">Delivery</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="address">Delivery Address</label>
+                            <textarea id="address" class="form-textarea" placeholder="Your address (if delivery)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="order">Your Order</label>
+                            <select id="order" class="form-select">
+                                <option value="combo">Special Fish Combo - $12.99</option>
+                                <option value="tilapia">Fried Tilapia - $10.50</option>
+                                <option value="stew">Traditional Fish Stew - $9.99</option>
+                                <option value="mixed">Mixed Fish Platter - $15.99</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="notes">Special Instructions</label>
+                            <textarea id="notes" class="form-textarea" placeholder="Any special requests or instructions" rows="3"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-shopping-cart"></i> Place Order Now
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h3 class="summary-title">Order Summary</h3>
+                    
+                    <div class="summary-item">
+                        <span>Special Fish Combo</span>
+                        <span>$12.99</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Delivery Fee</span>
+                        <span>$2.00</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Tax</span>
+                        <span>$1.30</span>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>$16.29</span>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px; color: var(--primary);">Delivery Information</h4>
+                        <p style="color: var(--gray); font-size: 0.9rem;">
+                            <i class="fas fa-clock"></i> Delivery time: 30-45 minutes<br>
+                            <i class="fas fa-map-marker-alt"></i> We deliver within 5km radius<br>
+                            <i class="fas fa-credit-card"></i> Cash on delivery available
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4 style="margin-bottom: 10px; color: var(--primary);">Contact Us</h4>
+                        <p style="color: var(--gray); font-size: 0.9rem;">
+                            <i class="fas fa-phone"></i> +251 927270070<br>
+                            <i class="fas fa-envelope"></i> info@salyfishhouse.com<br>
+                            <i class="fas fa-map-marker-alt"></i> Ayat Square, Addis Ababa
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Saly Fish House</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Serving fresh fish 365 days a year in Addis Ababa since 2010. Our mission is to provide delicious, affordable fish dishes in a cozy atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#order">Order Online</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ayat Square, Addis Ababa, Ethiopia</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+251927270070</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@salyfishhouse.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Open Daily: 9:00 AM - 10:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Saly Fish House. All rights reserved. | Designed for the best fish experience in Addis</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form submission
+        const orderForm = document.getElementById('orderForm');
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const orderType = document.getElementById('order').options[document.getElementById('order').selectedIndex].text;
+            
+            // Show confirmation message
+            alert(`Thank you, ${name}! Your order for "${orderType}" has been received. We will contact you shortly to confirm.`);
+            
+            // Reset form
+            orderForm.reset();
+        });
+        
+        // Update order summary when order selection changes
+        const orderSelect = document.getElementById('order');
+        const deliverySelect = document.getElementById('delivery');
+        
+        function updateOrderSummary() {
+            // Get selected order price
+            let price = 12.99; // default
+            const selectedOption = orderSelect.options[orderSelect.selectedIndex].value;
+            
+            if (selectedOption === 'tilapia') price = 10.50;
+            else if (selectedOption === 'stew') price = 9.99;
+            else if (selectedOption === 'mixed') price = 15.99;
+            
+            // Calculate delivery fee
+            const deliveryFee = deliverySelect.value === 'delivery' ? 2.00 : 0;
+            
+            // Calculate tax
+            const tax = (price + deliveryFee) * 0.08;
+            
+            // Calculate total
+            const total = price + deliveryFee + tax;
+            
+            // Update summary display
+            document.querySelectorAll('.summary-item')[0].innerHTML = `<span>${orderSelect.options[orderSelect.selectedIndex].text.split(' - ')[0]}</span><span>$${price.toFixed(2)}</span>`;
+            document.querySelectorAll('.summary-item')[1].innerHTML = `<span>Delivery Fee</span><span>$${deliveryFee.toFixed(2)}</span>`;
+            document.querySelectorAll('.summary-item')[2].innerHTML = `<span>Tax</span><span>$${tax.toFixed(2)}</span>`;
+            document.querySelector('.summary-total').innerHTML = `<span>Total</span><span>$${total.toFixed(2)}</span>`;
+        }
+        
+        orderSelect.addEventListener('change', updateOrderSummary);
+        deliverySelect.addEventListener('change', updateOrderSummary);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.querySelector('.hero');
+    const leftEye = document.querySelector('.left-eye');
+    const rightEye = document.querySelector('.right-eye');
+    const fishMouth = document.querySelector('.fish-mouth');
+    const fishContainer = document.querySelector('.fish-dish-container');
+    
+    // Store the original positions of eyes (relative to fish container)
+    const leftEyeOriginal = { x: 35, y: 42 }; // percentages from CSS
+    const rightEyeOriginal = { x: 65, y: 42 }; // percentages from CSS
+    const mouthOriginal = { x: 50, y: 55 }; // percentages from CSS
+    
+    // Track mouse movement
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const fishRect = fishContainer.getBoundingClientRect();
+        
+        // Calculate mouse position relative to hero section
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // Calculate center of fish container
+        const fishCenterX = fishRect.left - rect.left + fishRect.width / 2;
+        const fishCenterY = fishRect.top - rect.top + fishRect.height / 2;
+        
+        // Calculate distance from mouse to fish center
+        const deltaX = mouseX - fishCenterX;
+        const deltaY = mouseY - fishCenterY;
+        
+        // Calculate distance (for mouth opening)
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Max movement for eyes (in percentage)
+        const maxMove = 1; // 1% of fish container
+        
+        // Calculate eye movement based on mouse position
+        const eyeMoveX = (deltaX / rect.width) * maxMove;
+        const eyeMoveY = (deltaY / rect.height) * maxMove;
+        
+        // Apply movement to eyes
+        if (leftEye && rightEye) {
+            // Move eyes relative to their original positions
+            leftEye.style.left = `calc(${leftEyeOriginal.x}% + ${eyeMoveX}px)`;
+            leftEye.style.top = `calc(${leftEyeOriginal.y}% + ${eyeMoveY}px)`;
+            
+            rightEye.style.left = `calc(${rightEyeOriginal.x}% + ${eyeMoveX}px)`;
+            rightEye.style.top = `calc(${rightEyeOriginal.y}% + ${eyeMoveY}px)`;
+            
+            // Move pupils within eyes
+            const pupilX = eyeMoveX * 2;
+            const pupilY = eyeMoveY * 2;
+            
+            leftEye.style.setProperty('--pupil-x', `${pupilX}px`);
+            leftEye.style.setProperty('--pupil-y', `${pupilY}px`);
+            rightEye.style.setProperty('--pupil-x', `${pupilX}px`);
+            rightEye.style.setProperty('--pupil-y', `${pupilY}px`);
+        }
+        
+        // Animate mouth - opens more when cursor is closer to fish
+        if (fishMouth) {
+            const mouthOpen = Math.max(8, 20 - (distance * 0.01));
+            fishMouth.style.height = `${mouthOpen}px`;
+            fishMouth.style.width = `${30 + (20 - mouthOpen) * 0.5}px`;
+            
+            // Slight mouth movement based on cursor position
+            const mouthMoveX = (deltaX / rect.width) * 0.5;
+            fishMouth.style.left = `calc(${mouthOriginal.x}% + ${mouthMoveX}px)`;
+        }
+    });
+    
+    // Reset when mouse leaves
+    heroSection.addEventListener('mouseleave', () => {
+        if (leftEye && rightEye) {
+            leftEye.style.left = `${leftEyeOriginal.x}%`;
+            leftEye.style.top = `${leftEyeOriginal.y}%`;
+            rightEye.style.left = `${rightEyeOriginal.y}%`;
+            rightEye.style.top = `${rightEyeOriginal.y}%`;
+            
+            leftEye.style.setProperty('--pupil-x', '0px');
+            leftEye.style.setProperty('--pupil-y', '0px');
+            rightEye.style.setProperty('--pupil-x', '0px');
+            rightEye.style.setProperty('--pupil-y', '0px');
+        }
+        
+        if (fishMouth) {
+            fishMouth.style.height = '15px';
+            fishMouth.style.width = '30px';
+            fishMouth.style.left = `${mouthOriginal.x}%`;
+        }
+    });
+    
+    // Add breathing animation when mouse is still
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let mouseStillCounter = 0;
+    
+    heroSection.addEventListener('mousemove', (e) => {
+        const deltaX = Math.abs(e.clientX - lastMouseX);
+        const deltaY = Math.abs(e.clientY - lastMouseY);
+        
+        if (deltaX < 2 && deltaY < 2) {
+            mouseStillCounter++;
+            if (mouseStillCounter > 10 && fishMouth) {
+                // Gentle breathing animation
+                const breath = Math.sin(Date.now() * 0.003) * 2 + 13;
+                fishMouth.style.height = `${breath}px`;
+            }
+        } else {
+            mouseStillCounter = 0;
+        }
+        
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+});
+</script>
+<script>
+// Check if video is playing
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.video-background video');
+    const videoContainer = document.querySelector('.video-background');
+    
+    if (video) {
+        // Check if video can play
+        video.addEventListener('error', function() {
+            console.log('Video failed to load, using fallback');
+            videoContainer.classList.add('no-video');
+        });
+        
+        // Check if video is playing
+        video.addEventListener('canplay', function() {
+            console.log('Video is ready to play');
+        });
+        
+        // Force play on mobile
+        video.play().catch(function(error) {
+            console.log('Autoplay prevented:', error);
+            // Show play button for mobile
+        });
+    }
+});
+</script>
+</body>
+</html>
